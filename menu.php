@@ -180,71 +180,36 @@ endif;
     <div id="burgerContent" class="modal-content">
         <span class="close2"></span>
 
-        <p>VERY NICE AND YUMMY BURGER</p>
+        <p>Burger with toppings of your choice</p>
     </div>
 </div>
 
 <?php
 
-/*$selectPizza = "select * from mo_restaurant.products where image = 'pizza2.png'";
-$resultP = mysqli_query($connect, $selectPizza);
-
-if (mysqli_num_rows($resultP) > 0) {
-    while($pizzaPic = mysqli_fetch_assoc($resultP)) {
-?>
-        <div>
-        <img src="images/<?php echo $pizzaPic['image']; ?>" id="pizzaPic" />
-        </div>
-<?php
-        echo "
-            <script> 
-                var pizzaImg = document.getElementById('pizzaPic');
-            </script>
-        ";
-    }
-}*/
 ?>
 
 <script>
-    //Collapsible
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-
     //modal
     var pizzaModal = document.getElementById('pizzaModal');
     var burgerModal = document.getElementById('burgerModal');
-
-    var btn = document.getElementById("myBtn");
-
+    
     var span = document.getElementsByClassName("close")[0];
     var burgerSpan = document.getElementsByClassName("close2")[0];
 
     var pizzaImg = document.getElementById('pizzaImg');
     var burgerImg = document.getElementById('burgerImg');
 
-    // When the user clicks the button, open the modal 
+    //open when pizza image is clicked
     pizzaImg.onclick = function () {
         pizzaModal.style.display = "block";
     }
 
-    // When the user clicks the button, open the modal 
+    //open when burger image is clicked
     burgerImg.onclick = function () {
         burgerModal.style.display = "block";
     }
 
-    // When the user clicks on <span> (x), close the modal
+    //close on X
     span.onclick = function () {
         pizzaModal.style.display = "none";
     }
@@ -252,7 +217,7 @@ if (mysqli_num_rows($resultP) > 0) {
         burgerModal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
+    //close modal when clicked outside
     window.onclick = function (event) {
         if (event.target == pizzaModal || event.target == burgerModal) {
             pizzaModal.style.display = "none";
