@@ -36,13 +36,5 @@ class MenuItem{
         return $this->price;
     }
 }
-    /*
-    $menuItem1 = new MenuItem();
-    // $menuItem = new MenuItem("Kebobs");
-    $menuItem1->itemName = "The WP Burger";
-    $menuItem1->description = "Freshly made all-beef patty served up with homefries";
-    $menuItem1->price = 14;
-*/
-
 
 ?>
