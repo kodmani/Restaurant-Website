@@ -26,9 +26,8 @@ echo("<button onclick=\"location.href='logout.php'\">Logout!</button>");
 
 <?php
 try{
-	$errorMessages = Array();  
-	
 	$customers = $customerDAO->getCustomers();
+	
 	if($customers){
 //Display customers
 		echo '<table border=\'5\'>';
@@ -49,5 +48,6 @@ try{
 	echo '<p>' . $e->getMessage() , '</p>';            
 }
 ?> 
+
 <?php include('footer.php'); ?>
 
