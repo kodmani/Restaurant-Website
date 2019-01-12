@@ -1,6 +1,5 @@
 <?php include('header.php');
 include('connect.php');
-
 session_start();
 //Start loop to get database product table
 $selectProducts = "SELECT * FROM products";
@@ -146,6 +145,45 @@ endif;
     </table>
 </div>
 
+<!-- The Modal -->
+<div id="steakModal" class="modal">
+    <!-- Modal content -->
+    <div id="steakContent" class="modal-content">
+        <h3>Steak cooked at your level of choice</h3>
+        <ul id="toppingsList" class="toppingsList">
+            <h4>Doneness: </h4><br />
+            <li name="rare" id="rare" class="rare">rare: <input type="checkbox" class="checkbox" checked/>
+            </li>
+            <li name="mediumRare" id="mediumRare" class="mediumRare">medium rare: <input type="checkbox" class="checkbox" checked/></li>
+            <li name="medium" id="medium" class="medium">medium: <input type="checkbox" class="checkbox" checked/></li><br />
+           <li name="mediumWellDone" id="mediumWellDone" class="mediumWellDone">medium well done: <input type="checkbox" class="checkbox" checked/></li>
+           <li name="wellDone" id="wellDone" class="wellDone">well done: <input type="checkbox" class="checkbox" checked/></li>
+        </ul>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="burgerModal" class="modal">
+    <!-- Modal content -->
+    <div id="burgerContent" class="modal-content">
+        <span class="close2"></span>
+        <h3>Burger with toppings of your choice</h3>
+        <ul id="toppingsList" class="toppingsList">
+            <h4>Toppings: </h4><br />
+            <li name="Lettuce" id="Lettuce" class="Lettuce">Lettuce: <input type="checkbox" class="checkbox" checked/>
+            </li>
+            <li name="Tomato" id="Tomato" class="Tomato">Tomato: <input type="checkbox" class="checkbox" checked/></li>
+            <li name="Mushroom" id="Mushroom" class="Mushroom">Mushroom: <input type="checkbox" class="checkbox" checked/>
+            </li>
+            <li name="Onions" id="Onions" class="Onions">Onions: <input type="checkbox" class="checkbox" checked/></li><br />
+            <li name="Bacon" id="Bacon" class="Bacon">Bacon: <input type="checkbox" class="checkbox" checked/></li>
+            <li name="Cheese" id="Cheese" class="Cheese">Cheese: <input type="checkbox" class="checkbox" checked/></li>
+            <li name="Ketchup" id="Ketchup" class="Ketchup">Ketchup: <input type="checkbox" class="checkbox" checked/></li>
+            <li name="Mayonnaise" id="Mayonnaise" class="Mayonnaise">Mayonnaise: <input type="checkbox" class="checkbox" checked/></li>
+        </ul>
+    </div>
+</div>
+
 <!-- Trigger/Open The Modal -->
 <!--  <button type="button" id="myBtn">Open Modal</button>-->
 
@@ -154,16 +192,16 @@ endif;
     <!-- Modal content -->
     <div id="pizzaContent" class="modal-content">
         <span class="close">&times;</span>
-
-        <p style="display: inline;">Size: </p>
+		<h3>Pizza with toppings of your choice</h3><br />
+        <p style="float: right;">Size:
         <select size="1">
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
             <option value="xLarge">X-Large</option>
-        </select>
+        </select> </p>
         <ul id="toppingsList" class="toppingsList">
-            <p>Toppings: </p>
+            <h4>Toppings: </h4><br />
             <li name="Mushrooms" id="Mushrooms" class="Mushrooms">Mushrooms: <input type="checkbox" class="checkbox"/>
             </li>
             <li name="Onions" id="Onions" class="Onions">Onions: <input type="checkbox" class="checkbox"/></li>
@@ -174,30 +212,22 @@ endif;
     </div>
 </div>
 
-<!-- The Modal -->
-<div id="burgerModal" class="modal">
-    <!-- Modal content -->
-    <div id="burgerContent" class="modal-content">
-        <span class="close2"></span>
-
-        <p>Burger with toppings of your choice</p>
-    </div>
-</div>
-
 <?php
-
 ?>
 
 <script>
     //modal
     var pizzaModal = document.getElementById('pizzaModal');
     var burgerModal = document.getElementById('burgerModal');
+    var steakModal = document.getElementById('steakModal');
     
-    var span = document.getElementsByClassName("close")[0];
+    var close = document.getElementsByClassName("close")[0];
     var burgerSpan = document.getElementsByClassName("close2")[0];
+    var steakSpan = document.getElementsByClassName("close3")[0];
 
     var pizzaImg = document.getElementById('pizzaImg');
     var burgerImg = document.getElementById('burgerImg');
+    var steakImg = document.getElementById('steakImg');
 
     //open when pizza image is clicked
     pizzaImg.onclick = function () {
@@ -209,27 +239,35 @@ endif;
         burgerModal.style.display = "block";
     }
 
+    //open when burger image is clicked
+    steakImg.onclick = function () {
+        steakModal.style.display = "block";
+    }
+
     //close on X
-    span.onclick = function () {
+    close.onclick = function () {
         pizzaModal.style.display = "none";
     }
+
     burgerSpan.onclick = function () {
         burgerModal.style.display = "none";
     }
 
     //close modal when clicked outside
     window.onclick = function (event) {
-        if (event.target == pizzaModal || event.target == burgerModal) {
+        if (event.target == pizzaModal || event.target == burgerModal || event.target == steakModal) {
             pizzaModal.style.display = "none";
             burgerModal.style.display = "none";
+            steakModal.style.display = "none";
         }
     }
 
     //hide shopping cart if empty
     <?php
     if(empty($_SESSION["shoppingCart"])){
-        ?>
-    orderDiv.style.display = 'none';
+    ?>
+    	orderDiv.style.display = 'none';
+
     <?php
     }
     ?>
