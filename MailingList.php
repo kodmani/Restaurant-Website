@@ -26,16 +26,11 @@ echo("<button onclick=\"location.href='logout.php'\">Logout!</button>");
 
 <?php
 try{
-	$customerDAO = new customerDAO();
-//Tracks errors with the form fields
-	$hasError = false;
-//Array for our error messages
 	$errorMessages = Array();  
-
+	
 	$customers = $customerDAO->getCustomers();
 	if($customers){
-//We only want to output the table if we have customers.
-//If there are none, this code will not run.
+//Display customers
 		echo '<table border=\'5\'>';
 		echo '<tr><th>Customer Name</th><th> Phone number </th><th> Email address </th><th>Referrer</th>';
 		foreach($customers as $customer){
