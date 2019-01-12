@@ -1,7 +1,5 @@
 <?php include('connect.php');
 
-//session_destroy();
-
 if (isset($_POST["add_to_cart"])) {
 
     if (isset($_SESSION["shoppingCart"])) {
@@ -63,6 +61,5 @@ if (isset($_GET["action"])) {
         $_SESSION['shoppingCart'] = array_values($_SESSION['shoppingCart']);
     }
 }
-
 
 ?>
