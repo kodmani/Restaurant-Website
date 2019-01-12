@@ -2,16 +2,6 @@
 require_once('abstractDAO.php');
 require_once('./model/customer.php');
 
-/*
-* To change this template, choose Tools | Templates
-* and open the template in the editor.
-*/
-
-/**
-* Description of customerDAO
-*
-* @author Matt
-*/
 class customerDAO extends abstractDAO {
 
     function __construct() {
@@ -22,11 +12,6 @@ class customerDAO extends abstractDAO {
         }
     }
 
-/*
-* This is an example of how to use the query() method of a mysqli object.
-* 
-* Returns an array of <code>Employee</code> objects. If no customers exist, returns false.
-*/
 public function getCustomers(){
 //The query method returns a mysqli_result object
     $result = $this->mysqli->query('SELECT * FROM mailinglist');
@@ -45,10 +30,6 @@ public function getCustomers(){
     return false;
 }
 
-/*
-* This is an example of how to use a prepared statement
-* with a select query.
-*/
 public function getCustomer($customerName){
     $query = 'SELECT * FROM mailinglist WHERE customerName = ?';
     $stmt = $this->mysqli->prepare($query);
