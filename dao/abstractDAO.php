@@ -3,13 +3,7 @@
 //Used to throw mysqli_sql_exceptions for database
 //errors instead or printing them to the screen.
 mysqli_report(MYSQLI_REPORT_STRICT);
-/**
- * Abstract data access class. Holds all of the database
- * connection information, and initializes a mysqli object
- * on instantiation.
- * 
- * @author Matt
- */
+
 class abstractDAO {
     protected $mysqli;
     
@@ -22,11 +16,7 @@ class abstractDAO {
     /* Name of database */
     protected static $DB_DATABASE = "mo_restaurant";
     
-    /*
-     * Constructor. Instantiates a new MySQLi object.
-     * Throws an exception if there is an issue connecting
-     * to the database.
-     */
+    //Instantiates a new MySQLi object.
     function __construct() {
         try{
             $this->mysqli = new mysqli(self::$DB_HOST, self::$DB_USERNAME, 
@@ -38,7 +28,6 @@ class abstractDAO {
     
     public function getMysqli(){
         return $this->mysqli;
-        
     }
     
 }
